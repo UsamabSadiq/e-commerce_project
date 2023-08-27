@@ -11,6 +11,7 @@ import { Context } from '../../utils/context'
 
 const Header = () => {
     const [scroll, setScroll] = useState(false)
+    const [showCart, setShowCart] = useState(false)
 
     const handleScroll = () => {
         const scrollValue = window.scrollY
@@ -39,12 +40,13 @@ const Header = () => {
                         <TbSearch className="text-xl cursor-pointer" />
                         <AiOutlineHeart className="text-xl cursor-pointer" />
                         <span className="relative">
-                            <CgShoppingCart className="text-xl cursor-pointer" />
+                            <CgShoppingCart onClick={() => setShowCart(true)} className="text-xl cursor-pointer" />
                             <span className="absolute top-[-5px] right-[-12px] min-w-[20px] text-center bg-[#8e2de2] text-xs rounded-lg">5</span>
                         </span>
                     </div>
                 </div>
             </div>
+            {showCart && <Cart setShowCart={setShowCart} />}
         </>
     )
 }

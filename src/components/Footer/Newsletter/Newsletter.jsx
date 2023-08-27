@@ -4,13 +4,10 @@ import newsletterImg from '../../../assets/newsletter-bg.jpeg'
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 
-
-
-
 const Newsletter = () => {
     return (
         <>
-            <div className=" main flex justify-center ">
+            <div className=" main flex justify-center">
                 <img src={newsletterImg} alt="" className='absolute h-[400px] w-full' />
                 <div className="content relative top-0 m-auto flex flex-col items-center justify-center h-[53vh] ">
                     <h3 className='uppercase text-slate-500 leading-8 font-semibold'>newsletter</h3>

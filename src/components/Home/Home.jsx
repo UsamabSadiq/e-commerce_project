@@ -10,7 +10,7 @@ const Home = () => {
             <div className="main_content">
                 <div className="layout max-w-[1200px] mx-auto my-3 px-2">
                     <Category />
-                    <Products />
+                    <Products heading='Popular Products' />
 
                 </div>
             </div>

@@ -4,7 +4,7 @@ import Payment from '../../assets/payments.png'
 const Footer = () => {
     return (
         <>
-            <footer className="main">
+            <footer className="main mt-20">
                 <div className="content max-w-[1200px] mx-auto ">
                     <div className='grid grid-cols-1 place-items-center lg lg:place-items-start md:grid-cols-2 lg:grid-cols-4 gap-10'>
                         <div className="col-1">
@@ -52,7 +52,7 @@ const Footer = () => {
                     </div>
                     {/* bottom footer */}
                     <hr />
-                    <div className="bottom-main px-2 mt-2 flex flex-col gap-2 items-center md:flex-row md:justify-between ">
+                    <div className="bottom-main px-2 my-2 flex flex-col gap-2 items-center md:flex-row md:justify-between ">
                         <p className='text-slate-500 uppercase'>Created By Usama, Premium Ecommerce Solution</p>
                         <img src={Payment} alt="" className='' />
                     </div>
