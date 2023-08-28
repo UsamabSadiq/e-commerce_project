@@ -12,6 +12,7 @@ import { Context } from '../../utils/context'
 const Header = () => {
     const [scroll, setScroll] = useState(false)
     const [showCart, setShowCart] = useState(false)
+    const [showSearch, setShowSearch] = useState(false)
 
     const handleScroll = () => {
         const scrollValue = window.scrollY
@@ -28,7 +29,7 @@ const Header = () => {
 
     return (
         <>
-            <div className={`main bg-black text-white w-full h-14 z-50 ${scroll ? ' sticky top-0' : ""}`} >
+            <div className={`main bg-black text-white w-full h-14 z-30 ${scroll ? ' sticky top-0' : ""}`} >
                 <div className="nav-content max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-3 md:px-6 pt-3 place-items-center">
                     <ul className="left hidden md:flex gap-6 items-center ">
                         <li className="text-sm font-semibold uppercase cursor-pointer">Home</li>
@@ -37,7 +38,7 @@ const Header = () => {
                     </ul>
                     <div className="center text-2xl font-bold cursor-pointer uppercase">jsDevStore</div>
                     <div className="right flex gap-3 items-center">
-                        <TbSearch className="text-xl cursor-pointer" />
+                        <TbSearch onClick={() => setShowSearch(true)} className="text-xl cursor-pointer" />
                         <AiOutlineHeart className="text-xl cursor-pointer" />
                         <span className="relative">
                             <CgShoppingCart onClick={() => setShowCart(true)} className="text-xl cursor-pointer" />
@@ -47,6 +48,7 @@ const Header = () => {
                 </div>
             </div>
             {showCart && <Cart setShowCart={setShowCart} />}
+            {showSearch && <Search setShowSearch={setShowSearch} />}
         </>
     )
 }

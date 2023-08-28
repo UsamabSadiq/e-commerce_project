@@ -9,11 +9,7 @@ import Newsletter from './components/Footer/Newsletter/Newsletter';
 
 function App() {
   return (
-    // <div>
-    //   <Header />
-    //   <Home />
-    //   <Footer />
-    // </div>
+
     <BrowserRouter>
       <Header />
       <Routes>
