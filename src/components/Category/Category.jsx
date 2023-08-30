@@ -1,7 +1,12 @@
-import React from 'react'
+import { useParams } from 'react-router-dom'
 import Products from '../Products/Products'
+import useFetch from '../../hooks/useFetch'
 
 const Category = () => {
+    const { id } = useParams()
+
+    const { data } = useFetch(`/api/products/?populate=*&[filters][categories][id]=${id}`)
+
     return (
         <>
             <div className='main max-w-[1200px] mx-auto'>
