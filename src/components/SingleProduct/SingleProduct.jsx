@@ -1,20 +1,23 @@
-import RelatedProduct from "./RelatedProduct/RelatedProduct"
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaPinterest, FaCartPlus } from "react-icons/fa";
-// import ProductImage from '../../assets/products/earbuds-prod-2.webp'
-
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import useFetch from "../../hooks/useFetch"
 import { useParams } from "react-router-dom";
 
+import RelatedProduct from "./RelatedProduct/RelatedProduct"
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaPinterest, FaCartPlus } from "react-icons/fa";
+
+import { Context } from "../../utils/context";
 
 const SingleProduct = () => {
+
+    const { handleAddToCart } = useContext(Context)
+
     const [quantity, setQuantity] = useState(1)
     const { id } = useParams()
     const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
 
     if (!data) return; // iss line ki waja sa hamain optional chaining nhi lagani pary gi, incase data nhi aya tw yahin sa return ho jaye ga.
     const product = data.data[0].attributes
-    // console.log('singleProd', product);
+
 
     const increment = () => {
         setQuantity(prevState => prevState + 1)
@@ -28,7 +31,7 @@ const SingleProduct = () => {
         }
     }
 
-    console.log('categoryid', product.categories.data[0].id);
+    // console.log('categoryid', product.categories.data[0].id);
 
     return (
         <>
@@ -47,8 +50,12 @@ const SingleProduct = () => {
                                     <button className="text-xl font-semibold border border-slate-500 py-1 px-3">{quantity}</button>
                                     <button className="text-xl font-bold border border-slate-500 py-1 px-3" onClick={increment}>+</button>
                                 </div>
-                                <button className="flex items-center gap-2 border border-gray-400 px-4 py-1 bg-violet-600 text-white">
-                                    <span><FaCartPlus /></span> Add To Cart</button>
+                                <button className="flex items-center gap-2 border border-gray-400 px-4 py-1 bg-violet-600 text-white" onClick={() => {
+                                    handleAddToCart(data.data[0], quantity)
+                                    setQuantity(1)
+                                }}>
+                                    <span><FaCartPlus /></span> Add To Cart
+                                </button>
                             </div>
                             <div className="share_category">
                                 <div className="text-1 mb-2">

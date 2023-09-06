@@ -1,8 +1,11 @@
-import React from 'react'
+import { useContext } from 'react'
 import { FaXmark } from "react-icons/fa6";
 import emptyCart from "../../assets/empty_cart.png";
 import CartItem from './CartItem/CartItem';
+import { Context } from '../../utils/context';
+
 const Cart = ({ setShowCart }) => {
+    const { cartItem } = useContext(Context)
     return (
         <>
             <div className='main fixed top-0 left-0 w-full h-full z-30 flex justify-end'>
@@ -21,15 +24,19 @@ const Cart = ({ setShowCart }) => {
                     <div className="content flex flex-col justify-between gap-4">
 
                         {/* When Cart Is Empty */}
-                        {/* <div className="main_empty-cart px-3">
-                            <img src={emptyCart} alt="" />
-                            <p className='text-sm text-center'>No Product In The Cart</p>
-                            <button className="checkout text-lg font-semibold text-white rounded-md w-full my-4 py-2 border-2 bg-violet-700 hover:bg-violet-800">Return To Shop</button>
-                        </div> */}
-
+                        {
+                            !cartItem?.length &&
+                            <div className="main_empty-cart px-3">
+                                <img src={emptyCart} alt="" />
+                                <p className='text-sm text-center'>No Product In The Cart</p>
+                                <button className="checkout text-lg font-semibold text-white rounded-md w-full my-4 py-2 border-2 bg-violet-700 hover:bg-violet-800">Return To Shop</button>
+                            </div>
+                        }
 
                         {/* When There is some Items in the cart */}
-                        <CartItem />
+                        {
+                            cartItem?.length && <CartItem />
+                        }
                     </div>
 
                 </div>
